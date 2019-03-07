@@ -3,6 +3,12 @@ public class MarsExplorerSimulator
 	private String place;
 	private String move;
 
+	public MarsExplorerSimulator()
+	{
+		this.place = "";
+		this.move = "";
+	}
+
 	public MarsExplorerSimulator(String place)
 	{
 		this.place = place;
