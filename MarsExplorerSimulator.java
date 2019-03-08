@@ -35,6 +35,11 @@ public class MarsExplorerSimulator
 		move += "(" + newMove + ")";
 	}
 
+	public void resetMove()
+	{
+		move = "";
+	}
+
 	public String toString()
 	{
 		String journey = "";

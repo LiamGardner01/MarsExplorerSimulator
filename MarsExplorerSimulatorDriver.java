@@ -50,10 +50,12 @@ public class MarsExplorerSimulatorDriver
 		}
 	}
 
+	// If the place of the mars explorer is not an empty
+	// string print out the toString method.
+
 	public void report(MarsExplorerSimulator apollo1)
 	{
-		// If the place of the mars explorer is not an empty
-		// string print out the toString method.
+		
 		if(apollo1.getPlace() != "")
 		{
 			System.out.println(apollo1);
@@ -64,21 +66,59 @@ public class MarsExplorerSimulatorDriver
 		}
 	}
 
+	// Check if the Mars Explorer has already been placed, and if so reset
+	// the movement and place a new explorer.
+
 	public void place(MarsExplorerSimulator apollo1, String xyCoordinates)
-	{				
+	{
+		if(apollo1.getPlace() != "")
+		{
+			apollo1.resetMove();
+		}				
 		apollo1.updatePlace(xyCoordinates);		
 	}
 
+	// Check if the place of the mars explorer is the desired move to space.
+	// If it isn't, keep adding 1 to the x and y coordinates until
+	// the destination is reached.
+
 	public void move(MarsExplorerSimulator apollo1, String xyCoordinates)
 	{
-		
+		if(!(apollo1.getPlace().equals(xyCoordinates)))
+		{
+			apollo1.updateMove(apollo1.getPlace());
+
+			String[] coordinates = xyCoordinates.split(",");
+			int desiredXValue = Integer.parseInt(coordinates[0]);
+			int desiredYValue = Integer.parseInt(coordinates[1]);
+
+			String[] originalCoordinates = apollo1.getPlace().split(",");
+			int currentXValue = Integer.parseInt(originalCoordinates[0]);
+			int currentYValue = Integer.parseInt(originalCoordinates[1]);
+
+			while(desiredXValue != currentXValue && desiredYValue != currentYValue)
+			{			
+				if(desiredYValue != currentYValue)
+				{
+					currentYValue++;
+					apollo1.updateMove(currentXValue + "," + currentYValue);
+				}
+				if(desiredXValue != currentXValue)
+				{
+					currentXValue++;
+					apollo1.updateMove(currentXValue + "," + currentYValue);
+				}
+			}
+		}
+
+		apollo1.updatePlace(xyCoordinates);
 	}
 
-	public boolean acceptableRange(String xyCoordinates)
-	{
-		// Get the x and y coordinates and check if they are within the
-		// acceptable range.
+	// Get the x and y coordinates and check if they are within the
+	// acceptable range.
 
+	public boolean acceptableRange(String xyCoordinates)
+	{		
 		boolean acceptable = false;
 		String[] coordinates = xyCoordinates.split(",");
 		int xValue = Integer.parseInt(coordinates[0]);
