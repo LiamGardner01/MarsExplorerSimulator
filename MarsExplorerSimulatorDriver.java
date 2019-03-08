@@ -18,13 +18,19 @@ public class MarsExplorerSimulatorDriver
 			File file = new File("scripts.txt");
 			Scanner sc = new Scanner(file);
 
+			int mission = 1;
 			// While the file has more lines keep reading in
 			while(sc.hasNextLine())
 			{
 				String getCommand = sc.nextLine();
 				if(getCommand.equalsIgnoreCase("REPORT"))
 				{
+					System.out.println("\nMission " + mission + "\n-----------");
 					report(apollo1);
+					System.out.println("-----------");
+					apollo1.resetPlace();
+					apollo1.resetMove();
+					mission++;
 				}
 				else
 				{
@@ -43,6 +49,7 @@ public class MarsExplorerSimulatorDriver
 					}
 				}
 			}
+			
 		}
 		catch(FileNotFoundException e)
 		{
@@ -62,7 +69,7 @@ public class MarsExplorerSimulatorDriver
 		}
 		else
 		{
-			System.out.println("\nThe Mars Explorer is not on the table and therefore no report can be made");
+			System.out.println("The Mars Explorer is not on the table and therefore no report can be made");
 		}
 	}
 
@@ -70,11 +77,7 @@ public class MarsExplorerSimulatorDriver
 	// the movement and place a new explorer.
 
 	public void place(MarsExplorerSimulator apollo1, String xyCoordinates)
-	{
-		if(apollo1.getPlace() != "")
-		{
-			apollo1.resetMove();
-		}				
+	{				
 		apollo1.updatePlace(xyCoordinates);		
 	}
 
@@ -130,7 +133,7 @@ public class MarsExplorerSimulatorDriver
 		}
 		else
 		{
-			System.out.println("The X and Y coordinates are not withing the acceptable range. Please make sure that they are no less than 0, and no greater than 5.");
+			System.out.println("\nThe X and Y coordinates are not withing the acceptable range. Please make sure that they are no less than 0, and no greater than 5.");
 		}
 
 		return acceptable;

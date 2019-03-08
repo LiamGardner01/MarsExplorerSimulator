@@ -35,6 +35,11 @@ public class MarsExplorerSimulator
 		move += "(" + newMove + ")";
 	}
 
+	public void resetPlace()
+	{
+		place = "";
+	}
+
 	public void resetMove()
 	{
 		move = "";
