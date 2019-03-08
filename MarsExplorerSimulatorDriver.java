@@ -42,7 +42,7 @@ public class MarsExplorerSimulatorDriver
 						{
 							place(apollo1, inputArray[1]);
 						}
-						else
+						else if(inputArray[0].equalsIgnoreCase("MOVE"))
 						{
 							move(apollo1, inputArray[1]);
 						}
@@ -87,7 +87,7 @@ public class MarsExplorerSimulatorDriver
 
 	public void move(MarsExplorerSimulator apollo1, String xyCoordinates)
 	{
-		if(!(apollo1.getPlace().equals(xyCoordinates)))
+		if(!(apollo1.getPlace().equals(xyCoordinates)) && apollo1.getPlace() != "")
 		{
 			apollo1.updateMove(apollo1.getPlace());
 
@@ -112,9 +112,8 @@ public class MarsExplorerSimulatorDriver
 					apollo1.updateMove(currentXValue + "," + currentYValue);
 				}
 			}
+			apollo1.updatePlace(xyCoordinates);
 		}
-
-		apollo1.updatePlace(xyCoordinates);
 	}
 
 	// Get the x and y coordinates and check if they are within the
