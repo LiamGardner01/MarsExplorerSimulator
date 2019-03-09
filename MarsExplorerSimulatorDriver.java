@@ -103,12 +103,26 @@ public class MarsExplorerSimulatorDriver
 			{			
 				if(desiredYValue != currentYValue)
 				{
-					currentYValue++;
+					if(desiredYValue > currentYValue)
+					{
+						currentYValue++;
+					}
+					else
+					{
+						currentYValue--;
+					}
 					apollo1.updateMove(currentXValue + "," + currentYValue);
 				}
 				if(desiredXValue != currentXValue)
 				{
-					currentXValue++;
+					if(desiredXValue > currentXValue)
+					{
+						currentXValue++;
+					}
+					else
+					{
+						currentXValue--;
+					}
 					apollo1.updateMove(currentXValue + "," + currentYValue);
 				}
 			}
