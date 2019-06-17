@@ -10,7 +10,7 @@ The programme was constructed using JDK.
 
 To run this project use the following commands:
 
-javac MarsExplorerSimulatorDriver.java
+javac MarsExplorerSimulatorDriver.java  
 java MarsExplorerSimulatorDriver
 
 Additional tests can be added by altering the scripts file.
